@@ -5,7 +5,7 @@ public:
         int left = 0 , right = numbers.size() -1;
 
         while(left < right){
-            long sum = numbers[left] + numbers[right];
+            int sum = numbers[left] + numbers[right];
 
             if(sum == target){
                 return {left+1 , right+1};

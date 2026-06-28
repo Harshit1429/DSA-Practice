@@ -9,8 +9,7 @@ public:
          for(string s : word2){
             s2 += s;
         }  
-        // sort(s1.begin() , s1.end());
-        // sort(s2.begin() , s2.end());
+        
 
         return s1 == s2;
     }

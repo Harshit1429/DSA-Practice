@@ -1,6 +1,3 @@
-// you might get confused while seeing use of dp array, just remove that dp array then it will be
-//more clear ans consize for you//
-
 class Solution {
     static List<Integer> res;
     static int dp[];
@@ -13,8 +10,6 @@ class Solution {
         solve(nums,0,1,ans);
         return res;
     }
-    //we have two condtions for every element weather to tkae the eleemnt or not,
-    //takini=g or adding into my list will happen only if the no. is divisible
     
     static void solve(int nums[], int i, int prev,List<Integer> ans){
         
@@ -25,7 +20,6 @@ class Solution {
             }
             return;
         }
-        // taking condition.....
         
         if(ans.size()>dp[i] && (nums[i]%prev==0 || prev%nums[i]==0)){
             dp[i]=ans.size();
@@ -33,7 +27,6 @@ class Solution {
             solve(nums,i+1,nums[i],ans);
             ans.remove(ans.size()-1);
         }
-        //not taking condition.....
         
         solve(nums,i+1,prev,ans);  
     }

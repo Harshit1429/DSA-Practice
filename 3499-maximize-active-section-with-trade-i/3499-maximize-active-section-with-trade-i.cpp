@@ -4,8 +4,8 @@ public:
         int cnt1 = 0; 
         int n = s.length(); 
         for(int i = 0; i < n; i++) if(s[i] == '1') cnt1++; 
-        // Now what
-        int prevZeros = -1, ans = 0; // equals to no of oones 
+       
+        int prevZeros = -1, ans = 0;  
         int i = 0; 
         while(i < n) {
             int j = i; 
@@ -13,9 +13,9 @@ public:
             int len = j - i; 
 
             if(s[i] == '0') {
-                // this block is of zero's 
-                if(prevZeros != -1) ans = max(ans, prevZeros + len ); // only when we have block of zero's in left. 
-                prevZeros = len; 
+    
+                if(prevZeros != -1) ans = max(ans, prevZeros + len ); 
+                 prevZeros = len; 
             }
             i = j; 
         }

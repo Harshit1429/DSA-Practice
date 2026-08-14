@@ -1,34 +1,38 @@
 class Solution {
 public:
     int coinChange(vector<int>& coins, int amount) {
-        vector<int> ans(amount+1 , -1);
-        int result = helper(coins , amount, ans);
+        
+        int n = coins.size();
+        vector<vector<int>> dp(n, vector<int>(amount+1, 1e9));
 
-        if(result != INT_MAX){
-            return result;
-        }
-        return -1;
-    }
-    int helper(vector<int>& coins, int amount,vector<int>& ans){
-        if(amount == 0){
-            return 0;
-        }
-        if(amount < 0){
-            return INT_MAX;
+        
+        for(int i = 0; i < n; i++){
+            dp[i][0] = 0;   
         }
 
-        if(ans[amount] != -1) return ans[amount];
 
-        int mini = INT_MAX;
-
-        for(int i = 0 ; i < coins.size() ; i++){
-          
-         int current = helper(coins , amount - coins[i],ans);
-
-          if(current != INT_MAX){
-            mini = min(mini , 1+current);
-          }
+        
+        for(int j = 0; j <= amount; j++){
+            if(j % coins[0] == 0){
+                dp[0][j] = j / coins[0];
+            }
         }
-       return ans[amount] = mini;
+
+        for(int i = 1; i < n; i++){
+            for(int j = 0; j <= amount; j++){
+
+                int nottake = dp[i-1][j];
+                int take = 1e9;
+
+                if(coins[i] <= j){
+                    take = 1 + dp[i][j - coins[i]];
+                }
+
+                dp[i][j] = min(take, nottake);
+            }
+        }
+
+        int ans = dp[n-1][amount];
+        return (ans >= 1e9) ? -1 : ans;
     }
 };

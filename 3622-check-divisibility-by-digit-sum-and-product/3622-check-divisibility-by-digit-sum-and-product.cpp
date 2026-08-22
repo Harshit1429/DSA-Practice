@@ -8,7 +8,6 @@ public:
              mul *= num;
             n /= 10;
         }
-        cout<<sum << " "<<mul;
         return number % (sum + mul) == 0;
     }
 };

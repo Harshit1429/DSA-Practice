@@ -32,7 +32,7 @@ public:
             ans = max(ans,curSum);
             return Node(min(root->val,left.minNode),max(root->val,right.maxNode),curSum);
         }
-        return Node(INT_MIN,INT_MAX,1);
+        return Node(INT_MIN,INT_MAX,0);
     }
     int maxSumBST(TreeNode* root) {
         helper(root);

@@ -2,16 +2,15 @@ class Solution {
 public:
     int scoreOfParentheses(string s) {
         int score = 0, mult = 1;
+        
         for (int i = 0; i < s.length(); i++) {
             if (s[i] == '(') {
-                if (s[i+1] == '(') {
-                    mult *= 2;
-                } else {
-                    score += mult;
-                    i++;
-                } 
+                mult *= 2;
             } else {
-                mult = mult/2;
+                mult /= 2;
+                if (i > 0 && s[i - 1] == '(') {
+                    score += mult;
+                }
             }
         }
         return score;
